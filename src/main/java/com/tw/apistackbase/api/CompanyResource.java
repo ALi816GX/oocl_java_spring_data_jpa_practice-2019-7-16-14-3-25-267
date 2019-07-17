@@ -5,13 +5,15 @@ import com.tw.apistackbase.dao.CompanyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.websocket.server.PathParam;
+
 @RestController
 @RequestMapping("/companies")
 public class CompanyResource {
 
 
     @Autowired
-    CompanyRepository companyRepository;
+    public CompanyRepository companyRepository;
 
     
     @GetMapping(produces = {"application/json"})
@@ -36,6 +38,20 @@ public class CompanyResource {
 
     }
 
+
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable Long id){
+
+        companyRepository.deleteById(id);
+
+    }
+
+    @DeleteMapping
+    public void deleteAll(){
+
+        companyRepository.deleteAll();
+
+    }
 
 
 }
