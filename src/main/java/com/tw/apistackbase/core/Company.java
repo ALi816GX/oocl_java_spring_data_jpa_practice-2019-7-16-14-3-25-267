@@ -1,9 +1,17 @@
 package com.tw.apistackbase.core;
 
 
+import lombok.Data;
+
+import lombok.NoArgsConstructor;
+
+
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
+@Data
+@NoArgsConstructor
 public class Company {
 
     @Id
@@ -12,37 +20,10 @@ public class Company {
 
     private String name;
 
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToOne(cascade = CascadeType.ALL)
     private Profile profile;
 
-    public Long getId() {
-        return id;
-    }
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Employee> employees;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Company() {
-    }
-
-    public Company(String name) {
-        this.name = name;
-    }
-
-    public Profile getProfile() {
-        return profile;
-    }
-
-    public void setProfile(Profile profile) {
-        this.profile = profile;
-    }
 }

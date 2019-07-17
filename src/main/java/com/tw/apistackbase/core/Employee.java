@@ -16,23 +16,23 @@ import javax.persistence.Id;
  *
  * @author:linGuangXiong
  * @Date:2019/7/17
- * @Time:15:06
+ * @Time:15:49
  * @description:
  */
 
 @Entity
 @Data
 @NoArgsConstructor
-public class Profile {
+public class Employee {
 
     @Id
     @JsonIgnore
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
 
-    private Long registeredCapital;
+    private String name;
 
-    private String certId;
+    private int age;
 
 
 }
